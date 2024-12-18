@@ -12,12 +12,11 @@ import Navbar from './components/common/Navbar'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       <Navbar />
-      <div className='min-h-screen max-w-[1280px] mx-auto px-8'>
+      <div className='min-h-full max-w-[1280px] mx-auto px-8'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
