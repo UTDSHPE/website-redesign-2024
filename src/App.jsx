@@ -8,6 +8,7 @@ import Sponsor from './components/Sponsor'
 import Contact from './components/Contact'
 
 import Navbar from './components/common/Navbar'
+import Footer from './components/common/Footer'
 
 import './App.css'
 
@@ -16,7 +17,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className='min-h-full max-w-[1280px] mx-auto px-8'>
+      <div className='min-h-screen max-w-[1280px] mx-auto px-8'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -25,6 +26,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
+      <Footer />
     </>
   )
 }
