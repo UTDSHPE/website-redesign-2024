@@ -70,3 +70,16 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.scroller{
+  overflow:hidden;
+  mask:linear-gradient(to right,transparent 0%,white 20%,white 80%,transparent 100%);
+}
+.scroll_inner{
+  width:max-content;
+  flex-wrap:nowrap;
+
+}
+.justify-text{
+  text-align:justify;
+}

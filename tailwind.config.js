@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes:{
+        infinite_scroll:{
+          "0%":{transform:"translateX(0)"},
+          "100%":{transform:"translate(-50%)"},
+        },
+      },
+      animation:{infinite_scroll:"infinite_scroll 20s linear infinite"},
       colors: {
         
         //SHPE colors
