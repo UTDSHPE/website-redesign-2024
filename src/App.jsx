@@ -10,6 +10,8 @@ import Contact from './components/Contact'
 import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
 
+
+
 import './App.css'
 
 function App() {
