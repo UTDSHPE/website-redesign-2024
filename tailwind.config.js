@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
+
       keyframes:{
         infinite_scroll:{
           "0%":{transform:"translateX(0)"},

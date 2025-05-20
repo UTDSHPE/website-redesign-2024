@@ -45,7 +45,7 @@ const logos= [
     addAnimation();
   },[])
   return(
-  <div ref = {scrollerRef} className = "scroller max-w-[1000px] ">
+  <div ref = {scrollerRef} className = "scroller max-w-[1200px] ">
     <div className="scroll_inner flex flex-nowrap gap-3 animate-infinite_scroll"> 
       {logos.map((logo,index) => {
         return(
@@ -53,7 +53,7 @@ const logos= [
             <img 
             src ={logo.src} 
             alt={`logo ${index + 1}`}
-            className = "h-28 object-contain shrink-0"
+            className = "h-28 object-contain shrink-1"
             />
           </Link>
 
@@ -78,17 +78,17 @@ const Mailto = ({ email, subject = '', body = '', children,className = ''}) => {
 const Sponsor = () => {
   return (
     <div>
-      <section className="p-8 bg-gray-50 min-h-screen w-auto">{/*Start page */}
+      <section className=" bg-white min-h-screen w-full">{/*Start page */}
         {/*Header image*/}
       <section
-        className="relative h-[65vh] bg-cover bg-center bg-fixed "
+        className="relative h-[65vh] w-full bg-cover bg-center bg-fixed "
         style={{
           backgroundImage: 'url(public/photos/jpmc-gbm-wideshot.JPEG)', 
         }}
       >
       </section>
 
-        <section className = " bg-white min-h-screen w-[70%] mx-auto pb-24">
+        <section className = " bg-white min-h-screen w-full mx-auto pb-24">
           <div className="pt-12">
             <h1 className="text-5xl font-extrabold text-black">
               Thank you to our Sponsors!

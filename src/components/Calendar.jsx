@@ -1,54 +1,45 @@
-import React, { useState } from "react";
-import dayjs from "dayjs";
+import React from 'react';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin  from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import googleCalendarPlugin from '@fullcalendar/google-calendar';
 
-const Calendar = () => {
-  const [currentDate, setCurrentDate] = useState(dayjs());
-
-  const startOfMonth = currentDate.startOf("month");
-  const endOfMonth = currentDate.endOf("month");
-  const startDay = startOfMonth.day(); // 0 = Sunday
-  const daysInMonth = currentDate.daysInMonth();
-
-  const prevMonth = () => setCurrentDate(currentDate.subtract(1, "month"));
-  const nextMonth = () => setCurrentDate(currentDate.add(1, "month"));
-
-  const renderDays = () => {
-    const days = [];
-
-    // Empty boxes before the 1st of the month
-    for (let i = 0; i < startDay; i++) {
-      days.push(<div key={`blank-${i}`} className="p-2" />);
-    }
-
-    // Actual day numbers
-    for (let day = 1; day <= daysInMonth; day++) {
-      days.push(
-        <div key={day} className="border p-2 text-center">
-          {day}
-        </div>
-      );
-    }
-
-    return days;
-  };
-
+export default function Calendar() {
   return (
-    <div className="w-full max-w-md mx-auto text-center">
-      <div className="flex justify-between items-center mb-4">
-        <button onClick={prevMonth}>←</button>
-        <h2 className="font-bold text-lg">
-          {currentDate.format("MMMM YYYY")}
-        </h2>
-        <button onClick={nextMonth}>→</button>
-      </div>
-      <div className="grid grid-cols-7 gap-1">
-        {["S", "M", "T", "W", "T", "F", "S"].map((d) => (
-          <div key={d} className="font-bold">{d}</div>
-        ))}
-        {renderDays()}
-      </div>
+    <div className="max-w-4xl mx-auto p-4">
+      <FullCalendar
+        plugins={[
+          dayGridPlugin,
+          timeGridPlugin,
+          interactionPlugin,
+          googleCalendarPlugin
+        ]}
+        initialView="dayGridMonth"
+        headerToolbar={{
+          left:   'prev,next today addCalendar',
+          center: 'title',
+          right:  'dayGridMonth,timeGridWeek,timeGridDay'
+        }}
+        customButtons={{
+          addCalendar: {
+            text: 'Add Google Calendar',
+            click: () => window.open(
+              'https://calendar.google.com/calendar/r?cid=utdshpe%40gmail.com',
+              '_blank'
+            )
+          }
+        }}
+        googleCalendarApiKey={import.meta.env.VITE_APP_GCAL_API_KEY}
+        events={{
+          googleCalendarId: 'utdshpe@gmail.com'
+        }}
+        eventColor="#8b0000"        /* deep-red bars */
+        navLinks={true}             /* clickable day/week names */
+        nowIndicator={true}         /* today’s line in week/day */
+        dayMaxEventRows={3}         /* “+n more” if >3 */
+        height="auto"               /* let it size itself */
+      />
     </div>
   );
-};
-
-export default Calendar;
+}
