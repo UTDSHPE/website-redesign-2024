@@ -1,75 +1,12 @@
 import React, { useRef, useEffect} from 'react'
 import {Link} from 'react-router-dom';
+import InfiniteCarousel from './common/InfiniteCarousel.jsx'
 
-import capitalone from "/photos/ScrollLogos/CapitalOne.png"
-import chase from "/photos/ScrollLogos/chase_300x300.png"
-import emerson from "/photos/ScrollLogos/emerson.png"
-import geico from "/photos/ScrollLogos/Geico.png"
-import microsoft from "/photos/ScrollLogos/Microsoft.png"
-import qorvo from "/photos/ScrollLogos/qorvo-logo.png"
-import ti from "/photos/ScrollLogos/TI-logo.png"
-
-const logos= [
-  {src:capitalone,url:"https://www.capitalone.com/"},
-  {src:chase,url:"/"},
-  {src:emerson,url:"/"},
-  {src:geico,url:"/"},
-  {src:microsoft,url:"/"},
-  {src:qorvo,url:"/"},
-  {src:ti,url:"/"},
-];
-
-  const InfiniteCarousel = ({logos}) =>{
-  const scrollerRef = useRef(null);
-
-  useEffect(()=>{
-    const scroller = scrollerRef.current;
-
-    function addAnimation(){
-      if(!scroller) 
-        return;//check if scroller loaded by DOM
-
-      const inner = scroller.querySelector(".scroll_inner");//inner is a list of
-      if(!inner||inner.dataset.cloned == "true") 
-          return;
-
-      const innerChildren = Array.from(inner.children);
-      if(inner.getAttributeNode("data-cloned")=="true") 
-        return;
-        innerChildren.forEach((item) =>{
-        const extendedLogos = item.cloneNode(true);
-        inner.appendChild(extendedLogos);
-      });
-      inner.setAttribute("data-cloned","true");
-    }
-    addAnimation();
-  },[])
-  return(
-  <div ref = {scrollerRef} className = "scroller max-w-[1200px] ">
-    <div className="scroll_inner flex flex-nowrap gap-3 animate-infinite_scroll"> 
-      {logos.map((logo,index) => {
-        return(
-          <Link key={index} href ={logo.url}>
-            <img 
-            src ={logo.src} 
-            alt={`logo ${index + 1}`}
-            className = "h-28 object-contain shrink-1"
-            />
-          </Link>
-
-        );
-      })/*end of map*/}
-
-
-    </div>
-  </div>
-  );
-};
-const Mailto = ({ email, subject = '', body = '', children,className = ''}) => {
+const Mailto = ({ email, subject = '', body = '', children, className = '' }) => {
   let params = subject || body ? '?' : '';
   if (subject) params += `subject=${encodeURIComponent(subject)}`;
   if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
-  return<a href={`mailto:${email}${params}`}className={className}>
+  return <a href={`mailto:${email}${params}`} className={className}>
     {children}
   </a>;
 };
@@ -83,7 +20,7 @@ const Sponsor = () => {
       <section
         className="relative h-[65vh] w-full bg-cover bg-center bg-fixed "
         style={{
-          backgroundImage: 'url(public/photos/jpmc-gbm-wideshot.JPEG)', 
+          backgroundImage: 'url(/photos/jpmc-gbm-wideshot.JPEG)', 
         }}
       >
       </section>
@@ -97,7 +34,7 @@ const Sponsor = () => {
 
           </div>
           <section className="flex items-center justify-center mt-10 max-w-[80%] mx-auto ">
-            <InfiniteCarousel logos={logos} />
+            <InfiniteCarousel/>
           </section> 
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
