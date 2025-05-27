@@ -65,7 +65,6 @@ export default function Calendar() {
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
-        initialDate={initialDate}
         headerToolbar={{
           left: 'prev,next today',
           center: 'title',
