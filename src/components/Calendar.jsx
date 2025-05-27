@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import googleCalendarPlugin from '@fullcalendar/google-calendar';
 
 export default function Calendar() {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/gcal') // Calls your Netlify Function
+      .then((response) => response.json())
+      .then((data) => setEvents(data))
+      .catch((err) => console.error('Error fetching events:', err));
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto p-4 text-black">
-      {/* Add Google Calendar Button ABOVE the calendar */}
       <div className="flex justify-end mb-4">
         <button
           onClick={() =>
@@ -23,24 +30,15 @@ export default function Calendar() {
         </button>
       </div>
 
-      {/* FullCalendar Component */}
       <FullCalendar
-        plugins={[
-          dayGridPlugin,
-          timeGridPlugin,
-          interactionPlugin,
-          googleCalendarPlugin
-        ]}
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
         headerToolbar={{
           left: 'prev,next today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
         }}
-        googleCalendarApiKey={import.meta.env.VITE_APP_GCAL_API_KEY}
-        events={{
-          googleCalendarId: 'utdshpe@gmail.com'
-        }}
+        events={events}
         eventColor="#f2792b"
         navLinks={true}
         nowIndicator={true}
