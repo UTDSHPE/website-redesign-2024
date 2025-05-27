@@ -11,3 +11,20 @@
 .fc-button:disabled {
     @apply bg-gray-400 text-white !important;
 }
+.fc {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.fc .fc-toolbar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.fc .fc-toolbar-chunk {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.fc .fc-view-harness {
+    overflow-x: auto; }

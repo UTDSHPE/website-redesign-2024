@@ -1,6 +1,10 @@
+/*Import inter google font*/
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -98,3 +102,4 @@ button:focus-visible {
   overflow: hidden;
   mask: linear-gradient(to right, transparent 0%, white 20%, white 80%, transparent 100%);
 }
+
