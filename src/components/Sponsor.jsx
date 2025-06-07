@@ -1,126 +1,125 @@
-import React, { useRef, useEffect} from 'react'
+import React, { useRef, useState} from 'react'
 import {Link} from 'react-router-dom';
-import InfiniteCarousel from './common/InfiniteCarousel.jsx'
+import logos from './common/Logos.js';
+import Mailto from './common/Mailto.jsx';
+import clsx from 'clsx';
+import useIsMobile from '../hooks/useIsMobile.js'
+import CardCarousel from './common/cardCarousel.jsx';
 
-const Mailto = ({ email, subject = '', body = '', children, className = '' }) => {
-  let params = subject || body ? '?' : '';
-  if (subject) params += `subject=${encodeURIComponent(subject)}`;
-  if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
-  return <a href={`mailto:${email}${params}`} className={className}>
-    {children}
-  </a>;
+const companyImages = [
+  { name: "Capital One", src: "/photos/SponsorImages/CapitalOne.jpg", url: "https://www.capitalone.com/" },
+  { name: "JPMorgan Chase", src: "/photos/SponsorImages/jpmorgan.jpg", url: "https://www.chase.com/" },
+  { name: "Emerson", src: "/photos/SponsorImages/emerson.jpg", url: "https://www.emerson.com/en-us" },
+  { name: "GEICO", src: "/photos/SponsorImages/geico.jpg", url: "https://www.geico.com/" },
+  { name: "Microsoft", src: "/photos/SponsorImages/microsoft.jpg", url: "https://www.microsoft.com/en-us/" },
+  { name: "Qorvo", src: "/photos/SponsorImages/qorvo.jpg", url: "https://www.qorvo.com/" },
+  { name: "Texas Instruments", src: "/photos/SponsorImages/ti.jpg", url: "https://www.ti.com/" },
+  { name: "Goldman Sachs", src: "/photos/SponsorImages/goldmansachs.jpg", url: "https://www.goldmansachs.com/" },
+];
+
+
+
+
+const SponsorCard = ({ name, src, url }) => {
+  return (
+    <a href={url} target="_blank" rel="noopener noreferrer"
+      className="block" //makes anchor a block level wrapper
+    >
+      <div className="relative overflow-hidden rounded-lg group h-[250px] w-auto">
+        {/* Image */}
+        <img
+          src={src}
+          alt={name}
+          className="object-cover w-full h-full transform transition-transform duration-1000 ease-in-out group-hover:scale-110"
+        />
+
+        {/* Company Name */}
+        <div className="absolute bottom-0 left-0 p-2 text-white text-sm font-semibold bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-tr-md">
+          {name}
+        </div>
+      </div>
+    </a>
+  );
 };
+
+const SponsorGrid = () => (
+  <div className="flex flex-wrap justify-center gap-6">
+    {companyImages.map((sponsor, index) => (
+      <SponsorCard
+        key={index}
+        name={sponsor.name}
+        src={sponsor.src}
+        url={sponsor.url}
+      />
+    ))}
+  </div>
+);
+
 
 //main
 const Sponsor = () => {
+  const isMobile=useIsMobile();
   return (
     <div>
-      <section className=" bg-white min-h-screen w-full">{/*Start page */}
-        {/*Header image*/}
-      <section
-        className="relative h-[65vh] w-full bg-cover bg-center bg-fixed "
-        style={{
-          backgroundImage: 'url(/photos/jpmc-gbm-wideshot.JPEG)', 
-        }}
-      >
-      </section>
+
 
         <section className = " bg-white min-h-screen w-full mx-auto pb-24">
-          <div className="pt-12">
-            <h1 className="text-5xl font-extrabold text-black">
-              Thank you to our Sponsors!
+
+        <div className="py-8 bg-gray-900">
+          <h1 className={clsx("font-medium text-white",isMobile?"text-4xl":"text-5xl")}>
+              Corporate Partners
             </h1>
-            <div className="h-1 w-full bg-gradient-to-r from-shpe-blue via-shpe-orange to-shpe-red rounded-full my-8" />
-
           </div>
-          <section className="flex items-center justify-center mt-10 max-w-[80%] mx-auto ">
-            <InfiniteCarousel/>
-          </section> 
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
-            <div className= "p-6">
-              <h2 className = " text-black font-semibold text-2xl text-left max-w-[70%] ml-auto mr-0">The SHPE UTD Chapter deeply appreciates the generosity and support of our corporate
-                partners. Your contributions help us grow as an organization, empower future Hispanic
-                leaders in STEM, and promote a more inclusive and innovative community.
-              </h2>
-            </div>
-
-            <div className="p-6 flex flex-col gap-4">
-              <div className ="max-w-[70%] flex flex-col gap-4 mr-auto ml-0">
-                {/*Sponsorship interest text*/}   
-                          
-                  <p className = "text-black text-left">
-                    Interested in partnering with us? Email our Corporate Liason at{' '}
-                    <Mailto 
-                      email="utdshpe@gmail.com" subject="" body="" className="underline text-blue-600">utdshpe@gmail.com
-                    </Mailto>.
-                    <p className = "text-gray-500 text-xs max-w-[100%] text-left mt-1 mx-auto">
-                      SHPE is a non-profit 501(c)3 organization. Contributions to SHPE are tax deductible.
-                    </p>
-                  </p>
-                {/*Button*/}
-                <a href = "/files/SponsorshipPacket.pdf" target="_blank"
-                  rel = "noopener noreferrer" 
-                  className=" w-40 h-40 rounded-full bg-shpe-blue text-white text-center 
-                  flex items-center mx-auto
-                  text-lg font-semibold shadow-lg hover:bg-shpe-blue2 transition-colors">
-                  View Corporate Packet
-                </a>
-              
-              </div>
-            </div>
+        <div className="h-1 w-full bg-gradient-to-r from-shpe-blue via-shpe-orange to-shpe-red rounded-full " />
+          <div className='mx-6 my-4'>
+            <SponsorGrid/>
           </div>
 
-          <h1 className="text-4xl mt-10 font-extrabold text-black">
+        <div className="flex flex-col md:flex-row flex-wrap justify-center items-start gap-8 bg-white my-12 px-6">
+          {/* Left section */}
+          <div className="flex-1 min-w-[300px] max-w-[600px] text-left">
+            <h2 className={clsx("text-black font-interTight font-normal leading-relaxed", isMobile ? "text-lg" : "text-2xl")}>
+              The SHPE UTD Chapter deeply appreciates the generosity and support of our corporate partners. Your contributions help us grow as an organization, empower future Hispanic leaders in STEM, and promote a more inclusive and innovative community.
+            </h2>
+          </div>
+
+          {/* Right section */}
+          <div className="flex-1 min-w-[300px] max-w-[500px] flex flex-col gap-4 text-left">
+            <div>
+              <p className={clsx("text-black", isMobile ? "text-normal" : "text-lg")}>
+                Interested in partnering with us? Email our Corporate Liaison at{' '}
+                <Mailto email="utdshpe@gmail.com" subject="" body="" className="underline text-blue-600">
+                  utdshpe@gmail.com
+                </Mailto>.
+              </p>
+              <p className={clsx("text-gray-500 my-1 max-w-[80%]", isMobile ? "text-sm" : "text-base")}>
+                SHPE is a non-profit 501(c)3 organization. Contributions to SHPE are tax deductible.
+              </p>
+            </div>
+
+            {/*Button*/}
+            <a href="/files/SponsorshipPacket.pdf" target="_blank"
+              rel="noopener noreferrer"
+              className={clsx(" rounded-full bg-shpe-blue text-white text-center flex items-center mx-auto font-semibold shadow-lg hover:bg-shpe-blue2 transition-colors",
+                isMobile ? "w-32 h-32 text-sm" :"w-40 h-40 text-lg")}>
+              View Corporate Packet
+            </a>
+          </div>
+        </div>
+
+
+        <h1 className={clsx(" mt-10 font-interTight font-medium text-black", isMobile ? "text-4xl" :"text-5xl")}>
               Sponsorship Tiers
-          </h1>
-          <div className="h-1 w-full bg-gradient-to-r from-shpe-blue via-shpe-orange to-shpe-red rounded-full my-8" />
+        </h1>
+        <CardCarousel/>
+        <h3 className="">
 
-          
-      {/*Tier cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4 md:px-16 py-10">
-            {/* Bronze Card*/}
-            <div className="bg-shpe-red rounded-md p-1 ">
-              {/* Inner white-bordered content box */}
-              <div className="border border-white mx-auto text-white flex flex-col items-center justify-center text-center min-h-[180px]">
-                <h3 className="text-2xl font-extrabold text-blue mb-2">Bronze Tier</h3>
-                <p className="text-lg font-semibold mb-1">$500+</p>
-                <p className="text-sm">General Body Meeting Presentation, Social Media Spotlight, Invitation to Annual Gala</p>
-              </div>
-            </div>
-            <div className="bg-shpe-red rounded-md p-1 ">
-              {/* Inner white-bordered content box */}
-              <div className="border border-white mx-auto text-white flex flex-col items-center justify-center text-center min-h-[180px]">
-                <h3 className="text-2xl font-extrabold text-blue mb-2">Silver Tier</h3>
-                <p className="text-lg font-semibold mb-1">$1000+</p>
-                <p className="text-sm"> Website Recognition, Invitation to Señoritas Dinner</p>
-              </div>
-            </div>
-            <div className="bg-shpe-red rounded-md p-1 ">
-              {/* Inner white-bordered content box */}
-              <div className="border border-white mx-auto text-white flex flex-col items-center justify-center text-center min-h-[180px]">
-                <h3 className="text-2xl font-extrabold text-blue mb-2">Gold Tier</h3>
-                <p className="text-lg font-semibold mb-1">$1500+</p>
-                <p className="text-sm"> Access to ResumeBook, UTD SHPE internal recruiting tool </p>
-              </div>
-            </div>
-            <div className="bg-shpe-red rounded-md p-1 ">
-              {/* Inner white-bordered content box */}
-              <div className="border border-white mx-auto text-white flex flex-col items-center justify-center text-center min-h-[180px]">
-                <h3 className="text-2xl font-extrabold text-blue mb-2">Platinum Tier</h3>
-                <p className="text-lg font-semibold mb-1">$2000+</p>
-                <p className="text-sm"> Keynote speech at Gala, Networking Mixer/Presentation</p>
-              </div>
-            </div>
-          </div>
-          
-          <p className="text-sm text-gray-500 text-center ">
-            Each tier includes the benefits of the previously listed tiers.
-          </p>
+        </h3>
+
+
 
 
         </section>{/*White section */}
-        </section>{/*Grey Section */}
     </div>
   );
 }

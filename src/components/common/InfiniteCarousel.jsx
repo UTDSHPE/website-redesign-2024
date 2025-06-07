@@ -1,19 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-// Logos live in public/, so these paths resolve at runtime
-const defaultLogos = [
-    { src: "/photos/ScrollLogos/CapitalOne.png", url: "https://www.capitalone.com/" },
-    { src: "/photos/ScrollLogos/chase_300x300.png", url: "https://www.chase.com/" },
-    { src: "/photos/ScrollLogos/emerson.png", url: "https://www.emerson.com/en-us" },
-    { src: "/photos/ScrollLogos/Geico.png", url: "https://www.geico.com/" },
-    { src: "/photos/ScrollLogos/Microsoft.png", url: "https://www.microsoft.com/en-us/" },
-    { src: "/photos/ScrollLogos/qorvo-logo.png", url: "https://www.qorvo.com/" },
-    { src: "/photos/ScrollLogos/TI-logo.png", url: "https://www.ti.com/" },
-    { src: "/photos/ScrollLogos/goldman-sachs.png", url: "https://www.goldmansachs.com/" },
-];
 
-const InfiniteCarousel = ({ logos = defaultLogos }) => {
+const InfiniteCarousel = ({ logos }) => {
     const scrollerRef = useRef(null);
 
     useEffect(() => {

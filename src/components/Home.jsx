@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Calendar from "./Calendar";
 import { InstagramEmbed } from "react-social-media-embed";
 import './fullcalendar.css';
+import logos from './common/Logos.js';
 import InfiniteCarousel from './common/InfiniteCarousel.jsx'
 
 export default function Home() {
@@ -68,7 +69,7 @@ export default function Home() {
 
       {/* Media & Updates title */}
       <div className="text-xs">
-        <h1 className="text-shpe-red font-interTight font-semibold ">
+        <h1 className="text-shpe-red font-interTight font-medium ">
           Media & Updates
           <div className="h-1 w-auto my-2 mx-auto bg-gradient-to-r from-shpe-blue via-shpe-orange to-shpe-red rounded-full"></div>
         </h1>
@@ -90,11 +91,11 @@ export default function Home() {
 
       {/* Sponsors Section */}
       <div className="text-xs mt-24 max-w-[65%] mx-auto flex flex-wrap items-center">
-        <h1 className="text-shpe-red font-interTight font-bold text-left flex-1">
+        <h1 className="text-shpe-red font-interTight font-medium text-left flex-1">
           Our Sponsors
         </h1>
         <div className="w-full sm:w-auto sm:ml-auto mt-6 sm:mt-0 hover:scale-105 transition-all ">
-          <a href="/Sponsor" className="text-white text-sm py-3 px-4 bg-shpe-blue rounded-md font-interTight font-semibold">
+          <a href="/Sponsor" className="text-white text-sm py-3 px-4 bg-shpe-blue rounded-md font-interTight font-medium">
             Become a Sponsor
           </a>
         </div>
@@ -102,13 +103,13 @@ export default function Home() {
 
       <div className="mt-4 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent rounded-full"></div>
       <section className="flex items-center justify-center mt-1 max-w-[90%] mx-auto">
-        <InfiniteCarousel />
+        <InfiniteCarousel logos={logos}/>
       </section>
       <div className="mt-1 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent rounded-full"></div>
 
       {/* Calendar Section */}
       <div className="text-xs mt-12">
-        <h1 className="text-shpe-red font-interTight font-bold">
+        <h1 className="text-shpe-red font-interTight font-medium">
           Calendar
         </h1>
       </div>

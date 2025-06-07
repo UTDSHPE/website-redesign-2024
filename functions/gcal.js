@@ -3,7 +3,7 @@ export default async (request) => {
     const apiKey = process.env.VITE_APP_GCAL_API_KEY;
     const calendarId = 'utdshpe@gmail.com';
 
-    // Compute one-year-ago ISO string
+    // Compute one year ago ISO string
     const now = new Date();
     const oneYearAgo = new Date(now);
     oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);

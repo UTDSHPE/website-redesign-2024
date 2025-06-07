@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       
+      
       fontFamily: {
         interTight: ['"Inter Tight"', 'sans-serif'],
       },
@@ -15,6 +16,10 @@ export default {
         infinite_scroll:{
           "0%":{transform:"translateX(0)"},
           "100%":{transform:"translate(-50%)"},
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
         },
       },
       animation:{infinite_scroll:"infinite_scroll 20s linear infinite"},
