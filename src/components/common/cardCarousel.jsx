@@ -191,7 +191,7 @@ export default function CardCarousel() {
                     />
                 ))}
             </div>
-            <h3 className='text-black my-4 text-left self-center'>
+            <h3 className={clsx('text-black my-4 text-left self-center',isMobile?'text-sm':'text-xl')}>
                 Are these tiers not what you're looking for? No problem! You can choose to sponsor 
                 a specific event/workshop, sponsor a student, or even offer a company tour! Contact our {' '}
                 <Mailto email="utdshpe@gmail.com" subject="" body="" className=" font-bold hover:scale-105">

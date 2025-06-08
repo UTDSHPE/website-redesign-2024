@@ -107,10 +107,15 @@ const Sponsor = () => {
           </div>
         </div>
 
+        <div className="flex flex-col items-center w-max mx-auto">
+          <h1 className={clsx("mt-10 font-interTight font-medium text-black w-max", isMobile ? "text-4xl" : "text-5xl")}>
+            Sponsorship Tiers
+          </h1>
+          <div className="mt-2 w-[150%] h-0.5 bg-gradient-to-r from-transparent via-black to-transparent" />
+        </div>
 
-        <h1 className={clsx(" mt-10 font-interTight font-medium text-black", isMobile ? "text-4xl" :"text-5xl")}>
-              Sponsorship Tiers
-        </h1>
+
+        <div className='max-w h-1 '></div>
         <CardCarousel/>
         <h3 className="">
 
