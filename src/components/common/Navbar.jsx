@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +29,7 @@ const Navbar = () => {
         <ul className='hidden md:flex flex-row max-w-[1000px] gap-12 items-center text-xl'>
           {navLinks.map((link) => (
             <li key={link.to}>
-              <Link to={link.to} className='hover:border-b-2	'>
+              <Link to={link.to} className='hover:border-b-2'>
                 {link.label}
               </Link>
             </li>
@@ -36,25 +37,30 @@ const Navbar = () => {
         </ul>
 
         {/* Mobile Hamburger Menu */}
-        <div className='md:hidden'>
+        <div className='md:hidden font-interTight'>
           <button
             onClick={toggleMenu}
-            className='z-50 relative'
+            className='z-50 relative p-2'
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            {isMenuOpen ? <>x</> : <>=</>}
+            {isMenuOpen ? (
+              <X size={24} />
+            ) : (
+              <Menu size={24} />
+            )}
           </button>
         </div>
       </div>
+
       {isMenuOpen && (
-        <div className='inset-0 z-40 md:hidden'>
-          <ul className='flex flex-col items-center justify-start h-full space-y-8 text-2xl'>
+        <div className='md:hidden shadow-lg'>
+          <ul className='flex flex-col items-center justify-start py-4 space-y-4 text-xl'>
             {navLinks.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
                   onClick={toggleMenu}
-                  className='hover:border-b-2	'
+                  className='hover:border-b-2'
                 >
                   {link.label}
                 </Link>
@@ -63,9 +69,8 @@ const Navbar = () => {
           </ul>
         </div>
       )}
-
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

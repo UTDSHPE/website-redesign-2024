@@ -5,13 +5,13 @@ import './fullcalendar.css';
 import logos from './common/Logos.js';
 import InfiniteCarousel from './common/InfiniteCarousel.jsx'
 
+
 export default function Home() {
   const imageRef = useRef(null);
   const [maskHeight, setMaskHeight] = useState(0);
-  const containerRef =useRef(null);
-  const [isVisible,setIsVisible] = useState(false);
+  const containerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const callbackFunction = 
   useEffect(() => {
     const hero = imageRef.current;
     if (!hero) return;
@@ -22,11 +22,10 @@ export default function Home() {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const scrollY = window.scrollY;//Y scroll position in pixels
-          let progress = (scrollY - offsetTop) / (offsetHeight *1.5);//scrollY is scroll-start of hero image(navbar above)
-          //offsetHeight is height of image, so decimal multiplier controls how much and hence how fast it fades on scroll
-          progress = Math.min(Math.max(progress, 0), 1);//keeps progess positive with the max, keeps progress under 1 with the min
-          setMaskHeight((1-progress) * 100);//set mask height as scrollprogress
+          const scrollY = window.scrollY;
+          let progress = (scrollY - offsetTop) / (offsetHeight * 1.5);
+          progress = Math.min(Math.max(progress, 0), 1);
+          setMaskHeight((1 - progress) * 100);
           ticking = false;
         });
         ticking = true;
@@ -39,7 +38,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full h-full bg-white pb-20 ">
+    <div className="w-full h-full bg-gray-50 font-interTight pb-20">
       {/* Hero Section */}
       <div className="relative w-full h-[100vh] overflow-hidden" ref={imageRef}>
         <img
@@ -52,7 +51,7 @@ export default function Home() {
         <div
           className="absolute top-0 left-0 w-full h-full pointer-events-none"
           style={{
-            background: `linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) ${maskHeight}%)`,
+            background: `linear-gradient(to bottom, rgba(249,250,251,0) 0%, rgba(249,250,251,1) ${maskHeight}%)`,
             transition: 'background 0.1s ease-out',
           }}
         ></div>
@@ -66,59 +65,89 @@ export default function Home() {
           />
         </div>
       </div>
-
       {/* Media & Updates title */}
-      <div className="text-xs">
-        <h1 className="text-shpe-red font-interTight font-medium ">
+      <div className="text-center mb-12 mt-16">
+        <h2 className="text-5xl font-bold text-gray-900 mb-4 tracking-tight">
           Media & Updates
-          <div className="h-1 w-auto my-2 mx-auto bg-gradient-to-r from-shpe-blue via-shpe-orange to-shpe-red rounded-full"></div>
-        </h1>
-       
+        </h2>
+        <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
       </div>
 
       {/* Instagram Section */}
-      <div className="flex flex-wrap justify-center gap-4 my-8 w-full">
-        <div className="flex-[1_1_300px] max-w-[350px] min-w-[250px]">
-          <InstagramEmbed url="https://www.instagram.com/p/DJSP62MS_9z/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" />
-        </div>
-        <div className="flex-[1_1_300px] max-w-[350px] min-w-[250px]">
-          <InstagramEmbed url="https://www.instagram.com/p/DAJYVOLRMUO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" />
-        </div>
-        <div className="flex-[1_1_300px] max-w-[350px] min-w-[250px]">
-          <InstagramEmbed url="https://www.instagram.com/p/DCM93xHxF3t/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div className="flex flex-wrap justify-center gap-8 my-8 w-full">
+          <div className="flex-[1_1_300px] max-w-[350px] min-w-[250px] bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-300">
+            <InstagramEmbed url="https://www.instagram.com/p/DJSP62MS_9z/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" />
+          </div>
+          <div className="flex-[1_1_300px] max-w-[350px] min-w-[250px] bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-300">
+            <InstagramEmbed url="https://www.instagram.com/p/DAJYVOLRMUO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" />
+          </div>
+          <div className="flex-[1_1_300px] max-w-[350px] min-w-[250px] bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-300">
+            <InstagramEmbed url="https://www.instagram.com/p/DCM93xHxF3t/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" />
+          </div>
         </div>
       </div>
 
       {/* Sponsors Section */}
-      <div className="text-xs mt-24 max-w-[65%] mx-auto flex flex-wrap items-center">
-        <h1 className="text-shpe-red font-interTight font-medium text-left flex-1">
-          Our Sponsors
-        </h1>
-        <div className="w-full sm:w-auto sm:ml-auto mt-6 sm:mt-0 hover:scale-105 transition-all ">
-          <a href="/Sponsor" className="text-white text-sm py-3 px-4 bg-shpe-blue rounded-md font-interTight font-medium">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div className="flex flex-col sm:flex-row items-center justify-between mb-8">
+          <div className="text-center sm:text-left mb-6 sm:mb-0">
+            <h2 className="text-5xl font-bold text-gray-900 tracking-tight">
+              Our Sponsors
+            </h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto sm:mx-0 mt-4"></div>
+          </div>
+          <a href="/Sponsor" className="inline-block bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
             Become a Sponsor
           </a>
         </div>
-      </div>
 
-      <div className="mt-4 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent rounded-full"></div>
-      <section className="flex items-center justify-center mt-1 max-w-[90%] mx-auto">
-        <InfiniteCarousel logos={logos}/>
-      </section>
-      <div className="mt-1 h-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent rounded-full"></div>
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 py-8">
+          <InfiniteCarousel logos={logos} />
+        </div>
+      </div>
 
       {/* Calendar Section */}
-      <div className="text-xs mt-12">
-        <h1 className="text-shpe-red font-interTight font-medium">
-          Calendar
-        </h1>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+            Upcoming Events
+          </h2>
+          <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+          <Calendar />
+        </div>
       </div>
 
-      <div className="px-4 pb-4 max-w-[70%] mx-auto border-2 rounded-lg my-4 border-gray-400">
-        <Calendar />
+      {/* Call to Action Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 rounded-2xl p-12 text-white shadow-xl">
+          <h2 className="text-4xl font-bold mb-6 tracking-tight">Connect With Us</h2>
+          <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
+            Follow our journey and stay updated with the latest news, events, and opportunities from SHPE at UTD.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://linktr.ee/SHPEUTD?fbclid=PAZXh0bgNhZW0CMTEAAad5LkTxdzhGd5avaYl0CG8sVL1zCbGiOvNu8s2MjawbxLzgFXcfPbbxLJPueg_aem_Omljavwg-uPiIyxA7XzKeA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-white text-blue-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+            >
+              LinkTree
+            </a>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScNSkWcBB6opW8gAc_o1UDilWk-7-natRsv6SOw9trSCN5f1A/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+            >
+              Join SHPE
+            </a>
+          </div>
+        </div>
       </div>
-    
-    
-    </div >
+    </div>
   );
 }
