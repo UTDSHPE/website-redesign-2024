@@ -170,7 +170,7 @@ export default function CardCarousel() {
                         {/*Map bullets and list them out */}
                         <div className="my-2 w-full min-w-0">
                             {item.bullets?.map((text, index) => (
-                                <BulletPoint text={text} />
+                                <BulletPoint key={`${item.id}-${index}`} text={text} />
                             ))
                             }
                         </div>
