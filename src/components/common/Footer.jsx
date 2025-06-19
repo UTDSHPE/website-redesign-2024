@@ -17,11 +17,11 @@ const Footer = () => {
 
   return (
     <div className={clsx(
-      "flex flex-row justify-between flex-nowrap text-white",
-      isMobile ? 'gap-x-5 px-2 pt-8 pb-5 items-center' : 'gap-x-6 px-8 pt-16 pb-10 items-start'
+      "flex flex-row justify-center flex-nowrap text-white",
+      isMobile ? 'gap-x-5 px-2 pt-8  items-center' : 'gap-x-6 px-8 pt-10 pb-2 items-start'
     )}>
-
-      {/* Column 1: Mailing Address - Hidden on mobile */}
+      {/*
+  
       {!isMobile && (
         <div className="flex flex-col font-interTight text-left max-w-xs">
           <h1 className="text-lg">Mailing Address</h1>
@@ -30,9 +30,9 @@ const Footer = () => {
           </p>
         </div>
       )}
-
+      */}
       {/* Column 2: Logo and Socials */}
-      <div className={clsx("flex flex-col items-center text-center", isMobile ? 'max-w-64 mx-auto ' : 'max-w-lg')}>
+      <div className={clsx("flex flex-col items-center text-center", isMobile ? 'max-w-64 mx-auto ' : 'max-w-sm')}>
         <a href="/" className="flex">
           <img
             src="/logos/chapter-logos-horizontal-pngs/SHPE_logo_horiz_University of Texas Dallas_KO.png"
@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Column 3: Email - Hidden on mobile */}
+      {/*
       {!isMobile && (
         <div className="flex flex-col font-interTight font-normal text-left max-w-xs">
           <h1 className="text-lg">Email:</h1>
@@ -62,6 +62,7 @@ const Footer = () => {
           </Mailto>
         </div>
       )}
+        */}
 
     </div>
   );
