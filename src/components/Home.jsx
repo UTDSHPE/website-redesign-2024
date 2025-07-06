@@ -4,13 +4,13 @@ import { InstagramEmbed } from "react-social-media-embed";
 import './fullcalendar.css';
 import logos from './common/Logos.js';
 import InfiniteCarousel from './common/InfiniteCarousel.jsx'
-
+import useIsMobile from '../hooks/useIsMobile.js'
 
 export default function Home() {
+  const isMobile = useIsMobile();
   const imageRef = useRef(null);
   const [maskHeight, setMaskHeight] = useState(0);
   const containerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const hero = imageRef.current;
@@ -67,7 +67,7 @@ export default function Home() {
       </div>
       {/* Media & Updates title */}
       <div className="text-center mb-12 mt-16">
-        <h2 className="text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+        <h2 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold text-gray-900 mb-4 tracking-tight`}>
           Media & Updates
         </h2>
         <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
@@ -75,24 +75,39 @@ export default function Home() {
 
       {/* Instagram Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <div className="flex flex-wrap justify-center gap-8 my-8 w-full">
-          <div className="flex-[1_1_300px] max-w-[350px] min-w-[250px] bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-300">
-            <InstagramEmbed url="https://www.instagram.com/p/DJSP62MS_9z/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" />
+        <div className="flex flex-col items-center md:flex-row md:flex-wrap md:justify-center gap-8 my-8 w-full">
+
+          <div className="flex justify-center bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-300">
+            <InstagramEmbed
+              url="https://www.instagram.com/p/DJSP62MS_9z/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+              style={{ maxWidth: 350}}
+            />
           </div>
-          <div className="flex-[1_1_300px] max-w-[350px] min-w-[250px] bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-300">
-            <InstagramEmbed url="https://www.instagram.com/p/DAJYVOLRMUO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" />
+
+          <div className="flex justify-center bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-300">
+            <InstagramEmbed
+              url="https://www.instagram.com/p/DAJYVOLRMUO/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+              style={{ maxWidth: 350, width: "100%" }}
+            />
           </div>
-          <div className="flex-[1_1_300px] max-w-[350px] min-w-[250px] bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-300">
-            <InstagramEmbed url="https://www.instagram.com/p/DCM93xHxF3t/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" />
+
+          <div className="flex justify-center bg-white rounded-2xl shadow-sm border border-gray-200 p-4 hover:shadow-lg transition-shadow duration-300">
+            <InstagramEmbed
+              url="https://www.instagram.com/p/DCM93xHxF3t/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+              style={{ maxWidth: 350, width: "100%" }}
+            />
           </div>
+
         </div>
       </div>
+
+
 
       {/* Sponsors Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="flex flex-col sm:flex-row items-center justify-between mb-8">
           <div className="text-center sm:text-left mb-6 sm:mb-0">
-            <h2 className="text-5xl font-bold text-gray-900 tracking-tight">
+            <h2 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold text-gray-900 tracking-tight`}>
               Our Sponsors
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto sm:mx-0 mt-4"></div>
@@ -110,7 +125,7 @@ export default function Home() {
       {/* Calendar Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="text-center mb-12">
-          <h2 className="text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+          <h2 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold text-gray-900 mb-4 tracking-tight`}>
             Upcoming Events
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
@@ -124,9 +139,11 @@ export default function Home() {
       {/* Call to Action Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 rounded-2xl p-12 text-white shadow-xl">
-          <h2 className="text-4xl font-bold mb-6 tracking-tight">Connect With Us</h2>
+          <h2 className={`${isMobile ? 'text-2xl' : 'text-4xl'} font-bold mb-6 tracking-tight`}>
+            Connect With Us
+          </h2>
           <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
-            Follow our journey and stay updated with the latest news, events, and opportunities from SHPE at UTD.
+            Follow our journey and stay updated with the latest news, events, and opportunities from UTD SHPE.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -148,6 +165,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+
+    {/*End page*/}</div>
   );
 }

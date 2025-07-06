@@ -1,12 +1,10 @@
 import React from 'react';
 import shpeUTD from '/logos/chapter-logos-vertical-pngs/SHPE_logo_vert_University of Texas Dallas_KO.png'
-import { FaCheckCircle } from "react-icons/fa";
-import { FaRegLightbulb } from "react-icons/fa";
-import { IoBookOutline } from "react-icons/io5";
+import { FaCheckCircle, FaRegLightbulb } from "react-icons/fa";
+import { IoBookOutline, IoBriefcaseOutline } from "react-icons/io5";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { PiChartLineUpBold } from "react-icons/pi";
 import { CiHeart } from "react-icons/ci";
-import { IoBriefcaseOutline } from "react-icons/io5";
 
 const About = () => {
   const SectionCard = ({ title, description, icon, bgColor = 'bg-blue-600' }) => (
