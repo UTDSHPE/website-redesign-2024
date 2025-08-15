@@ -145,7 +145,7 @@ export default function Home() {
           <p className="text-xl mb-8 opacity-95 max-w-2xl mx-auto">
             Follow our journey and stay updated with the latest news, events, and opportunities from UTD SHPE.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="https://linktr.ee/SHPEUTD?fbclid=PAZXh0bgNhZW0CMTEAAad5LkTxdzhGd5avaYl0CG8sVL1zCbGiOvNu8s2MjawbxLzgFXcfPbbxLJPueg_aem_Omljavwg-uPiIyxA7XzKeA"
               target="_blank"
@@ -155,13 +155,24 @@ export default function Home() {
               LinkTree
             </a>
             <a
+              href="https://shpe.org/membership/become-a-member/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-transparent text-white border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 hover:shadow-lg hover:text-blue-700 transform hover:-translate-y-1 transition-all duration-300"
+            >
+              SHPE National <br></br>Membership
+              </a>
+            <a
               href="https://docs.google.com/forms/d/e/1FAIpQLScNSkWcBB6opW8gAc_o1UDilWk-7-natRsv6SOw9trSCN5f1A/viewform"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+              className="inline-block bg-white text-blue-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
             >
-              Join SHPE
+              Join UTD SHPE
             </a>
+            
+            
+
           </div>
         </div>
       </div>
