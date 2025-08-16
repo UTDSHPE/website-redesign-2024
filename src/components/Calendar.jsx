@@ -53,7 +53,7 @@ export default function Calendar() {
         <button
           onClick={() =>
             window.open(
-              'https://calendar.google.com/calendar/r?cid=utdshpe%40gmail.com',
+              'https://calendar.google.com/calendar/u/0?cid=MDE5Y2IyMjc2ODBlYTA0MTJiZWNiMjFjNTU2ZGFmZTJjZjI1ZGIzMjgxNzY0NTIzMmYxNDY3NDhlMDQwMTMzZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t',
               '_blank'
             )
           }

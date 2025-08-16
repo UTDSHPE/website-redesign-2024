@@ -1,7 +1,7 @@
 // functions/gcal.js
 export default async (request) => {
     const apiKey = process.env.VITE_APP_GCAL_API_KEY;
-    const calendarId = 'utdshpe@gmail.com';
+    const calendarId = '019cb227680ea0412becb21c556dafe2cf25db32817645232f146748e040133e@group.calendar.google.com';
 
     // Compute one year ago ISO string
     const now = new Date();
