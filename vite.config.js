@@ -5,15 +5,15 @@ import Sitemap from 'vite-plugin-sitemap';
 // https://vite.dev/config/
 const names = [
   '',
-  'About',
-  'Team',
-  'Sponsor',
-  'Contact',
+  'about',
+  'team',
+  'sponsor',
+  'contact',
 ]
 const dynamicRoutes = names.map(name => `/${name}`)
 export default defineConfig({
   plugins: [react(),
-    Sitemap({ hostname: 'https://example.com',
+    Sitemap({ hostname: 'https://utdshpe.org',
       dynamicRoutes,
      }),
   ],
